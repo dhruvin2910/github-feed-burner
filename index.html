@@ -52,12 +52,13 @@
 
         </div>
 
-        <div class="form-group col-sm-4 col-md-3 col-sm-push-4 col-md-push-6">
+        <div class="form-group col-sm-6 col-sm-push-2 col-md-4 col-md-push-5">
 
           <!-- status-->
           <div class="input-group">
             <div class="input-group-addon">Status</div>
             <input type="text" class="form-control" id="status" disabled title="Status">
+            <div id="rateLimit" class="input-group-addon">-</div>
           </div>
 
         </div>
@@ -72,8 +73,8 @@
         <!-- nav tabs -->
         <ul class="nav nav-tabs">
           <li class="active">
-            <a href="#followersPane" data-toggle="tab">Followers
-              <span id="followersBadge" class="badge">-</span>
+            <a href="#userPane" data-toggle="tab">My Feeds
+              <span id="userBadge" class="badge">-</span>
             </a>
           </li>
           <li>
@@ -81,11 +82,17 @@
               <span id="followingBadge" class="badge">-</span>
             </a>
           </li>
+          <li>
+            <a href="#followersPane" data-toggle="tab">Followers
+              <span id="followersBadge" class="badge">-</span>
+            </a>
+          </li>
         </ul>
 
         <!-- tab panes -->
         <div class="tab-content">
-          <div class="tab-pane active" id="followersPane"></div>
+          <div class="tab-pane active" id="userPane"></div>
+          <div class="tab-pane" id="followersPane"></div>
           <div class="tab-pane" id="followingPane"></div>
         </div>
 

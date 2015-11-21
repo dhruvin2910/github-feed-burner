@@ -18,6 +18,22 @@
     set status(value) {
       this.statusElement.val(value);
     },
+    userFeeds: [],
+    get rateLimit() {
+      return this.rateLimitElement.html();
+    },
+    set rateLimit(value) {
+      var resetDate;
+      if(value.rate.remaining) {
+        this.rateLimitElement.html(value.rate.remaining);
+      } else {
+        resetDate = new Date(value.rate.reset * 1000);
+        this.status = 'Rate Limit';
+        this.rateLimitElement.html(resetDate.getHours() + ':' + resetDate.getMinutes());
+        this.userNameElement.attr('disabled', true);
+        this.submitElement.attr('disabled', true);
+      }
+    },
 
     // Elements
     userNameElement: $('#username'),
@@ -27,10 +43,13 @@
     followingPaneElement: $('#followingPane'),
     statusElement: $('#status'),
     submitElement: $('#submit'),
+    userPaneElement: $('#userPane'),
+    userBadgeElement: $('#userBadge'),
+    rateLimitElement: $('#rateLimit'),
 
     // Methods
     updateUserName: function (newUserName) {
-      if(newUserName && this.userName != newUserName){
+      if (newUserName && this.userName != newUserName) {
         this.userName = newUserName;
         this.status = 'Loading...';
         setTimeout(this.getUserData.bind(this), 100);
@@ -46,7 +65,8 @@
         async: false
       }).responseJSON;
 
-      if(!this.userData.message) {
+      if (!this.userData.message) {
+        this.getUserFeeds();
         this.populateFollowers();
         this.getFollowersFeeds();
         this.populateFollowing();
@@ -65,6 +85,16 @@
       this.userNameElement.val(this.userName);
       this.followersBadgeElement.html(this.userData.followers);
       this.followingBadgeElement.html(this.userData.following);
+      this.userBadgeElement.html(this.userData.login ? this.userFeeds.length : undefined);
+
+      // Update user
+      this.userPaneElement.html('');
+      if (this.userFeeds.length) {
+        app.userPaneElement.append(app.templates.feeds({
+          user: app.userData,
+          feeds: app.userFeeds
+        }));
+      }
 
       // Update followers
       this.followersPaneElement.html('');
@@ -86,6 +116,10 @@
 
       // Update status
       this.status = 'Ready';
+
+      // Update rateLimit
+      this.rateLimit = this.getRateLimit();
+
     },
 
     populateFollowers: function () {
@@ -132,6 +166,22 @@
       );
     },
 
+    getUserFeeds: function () {
+      app.userFeeds = $.ajax({
+        type: 'GET',
+        url: app.urls.feeds(app.userData.login),
+        async: false
+      }).responseJSON;
+    },
+
+    getRateLimit: function () {
+      return $.ajax({
+        type: 'GET',
+        url: app.urls.rateLimit,
+        async: false
+      }).responseJSON;
+    },
+
     // URLs
     urls: {
       get user() {
@@ -147,7 +197,11 @@
       },
 
       feeds: function (user) {
-        return 'https://api.github.com/users/' + user + '/events/public'
+        return 'https://api.github.com/users/' + user + '/events/public';
+      },
+
+      get rateLimit() {
+        return 'https://api.github.com/rate_limit';
       }
     },
 
@@ -179,6 +233,7 @@
   app.submitElement.click(function () {
     app.updateUserName(app.userNameElement.val());
   });
-  app.status = 'Ready';
+  app.rateLimit = app.getRateLimit();
+  app.status = app.status || 'Ready';
 
 })();
