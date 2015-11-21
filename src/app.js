@@ -1,6 +1,8 @@
 (function () {
   "use strict";
 
+  // todo: Use deferred or promise to handle request queue.
+
   window.app = {
 
     // Properties
@@ -24,12 +26,15 @@
     followersPaneElement: $('#followersPane'),
     followingPaneElement: $('#followingPane'),
     statusElement: $('#status'),
+    submitElement: $('#submit'),
 
     // Methods
     updateUserName: function (newUserName) {
-      this.userName = newUserName;
-      this.status = 'Loading...';
-      setTimeout(this.getUserData.bind(this), 0);
+      if(newUserName && this.userName != newUserName){
+        this.userName = newUserName;
+        this.status = 'Loading...';
+        setTimeout(this.getUserData.bind(this), 100);
+      }
     },
 
     getUserData: function () {
@@ -171,21 +176,8 @@
   });
 
   // Initialize
-
-  // username update handler
-  app.userNameElement.keypress(function (event) {
-    var currentUserName;
-    if (event.which == 13) {
-      currentUserName = app.userNameElement.val();
-      if (app.userName != currentUserName) {
-        app.updateUserName(currentUserName);
-      }
-    }
-  }).blur(function () {
-    var currentUserName = app.userNameElement.val();
-    if (app.userName != currentUserName) {
-      app.updateUserName(currentUserName);
-    }
+  app.submitElement.click(function () {
+    app.updateUserName(app.userNameElement.val());
   });
   app.status = 'Ready';
 

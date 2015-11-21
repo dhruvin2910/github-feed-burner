@@ -1,7 +1,7 @@
-GitHub Feeds Burner
+GitHub Feed Burner
 ===================
 
-A open-source feed-burner for github users. You may read public
+An open-source feed-burner for github users. You may read public
 activities of the github users you are connected to (i.e. followers
 and following) all at one place.
 
@@ -21,7 +21,7 @@ where merit will be the popularity of this repository
 How to use
 ----------
 
-1. Go to [github-feeds-burner](http://dhruvin2910.github.io/github-feeds-burner)
+1. Go to [github-feed-burner](http://dhruvin2910.github.io/github-feed-burner)
 
 2. Enter github username
 
@@ -39,5 +39,12 @@ You may want to use it if you
 How to contribute
 -----------------
 
-Currently I'm looking for angular (1.x) developers who can add more
+Currently I'm looking for jQuery developers who can add more
 features. Don't raise issues, just Fork & PR.
+
+Known issues
+------------
+
+- Slow internet connection may cause lag.
+- Since data is fetched from many endpoints searching may become too slow
+(not used deferred or promise).
