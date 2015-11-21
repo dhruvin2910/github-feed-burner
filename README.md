@@ -21,9 +21,9 @@ where merit will be the popularity of this repository
 How to use
 ----------
 
-0. Enter github username
+1. Go to [github-feeds-burner](http://dhruvin2910.github.io/github-feeds-burner)
 
-1. That's it.
+2. Enter github username
 
 You may want to use it if you
 -----------------------------
