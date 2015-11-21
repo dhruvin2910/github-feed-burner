@@ -32,7 +32,7 @@ You may want to use it if you
 
 - want to get updated daily.
 
-- to socialize.
+- want to socialize.
 
 - think this is cool. (Star if you really do.)
 
