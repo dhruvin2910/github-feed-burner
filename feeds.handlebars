@@ -44,22 +44,15 @@
               <td><a href="https://github.com/{{repo.name}}" target="_blank">{{onlyRepo repo.name}}</a></td>
 
               <td><a
-                href="https://github.com/{{#if org.login}}
-                  {{org.login}}
-                {{/if}}{{#unless org.login}}
-                  {{@root.user.login}}
-                {{/unless}}/{{onlyRepo repo.name}}/tree/{{onlyBranch payload.ref}}"
+                href="https://github.com/{{#if org.login}}{{org.login}}{{/if}}{{#unless org.login}}{{@root.user.login}}{{/unless}}/{{onlyRepo repo.name}}/tree/{{onlyBranch payload.ref}}"
                 target="_blank">{{onlyBranch payload.ref}}</a></td>
 
               <td><a href="https://github.com/{{org.login}}" target="_blank">{{org.login}}</a></td>
 
               <td>{{#each payload.commits}}
-                <a href="https://github.com/{{#if ../org.login}}
-                  {{../org.login}}
-                {{/if}}{{#unless ../org.login}}
-                  {{@root.user.login}}
-                {{/unless}}/{{onlyRepo ../repo.name}}/commit/{{sha}}"
-                   target="_blank">{{message}}</a><br>
+                <a
+                  href="https://github.com/{{#if ../org.login}}{{../org.login}}{{/if}}{{#unless ../org.login}}{{@root.user.login}}{{/unless}}/{{onlyRepo ../repo.name}}/commit/{{sha}}"
+                  target="_blank">{{message}}</a><br>
               {{/each}}</td>
 
             </tr>
@@ -69,8 +62,10 @@
 
       </div>
     </div>
-  {{/if}} {{#unless feeds}}
-  <div class="h3 text-center">No recent activity.</div>
-{{/unless}}
+  {{/if}}
+
+  {{#unless feeds}}
+    <div class="h3 text-center">No recent activity.</div>
+  {{/unless}}
 
 </div>
