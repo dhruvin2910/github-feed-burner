@@ -43,16 +43,18 @@
 
               <td><a href="https://github.com/{{repo.name}}" target="_blank">{{onlyRepo repo.name}}</a></td>
 
-              <td><a
-                href="https://github.com/{{#if org.login}}{{org.login}}{{/if}}{{#unless org.login}}{{@root.user.login}}{{/unless}}/{{onlyRepo repo.name}}/tree/{{onlyBranch payload.ref}}"
-                target="_blank">{{onlyBranch payload.ref}}</a></td>
+              <td>{{#if payload.ref}}
+                <a href="https://github.com/{{repo.name}}/tree/{{onlyBranch payload.ref}}"
+                   target="_blank">{{onlyBranch payload.ref}}</a>
+              {{/if}}</td>
 
-              <td><a href="https://github.com/{{org.login}}" target="_blank">{{org.login}}</a></td>
+              <td>{{#if org.login}}
+                <a href="https://github.com/{{org.login}}" target="_blank">{{org.login}}</a>
+              {{/if}}</td>
 
               <td>{{#each payload.commits}}
-                <a
-                  href="https://github.com/{{#if ../org.login}}{{../org.login}}{{/if}}{{#unless ../org.login}}{{@root.user.login}}{{/unless}}/{{onlyRepo ../repo.name}}/commit/{{sha}}"
-                  target="_blank">{{message}}</a><br>
+                <a href="https://github.com/{{../repo.name}}/commit/{{sha}}" target="_blank">{{message}}</a>
+                <br>
               {{/each}}</td>
 
             </tr>
