@@ -47,12 +47,14 @@
     userBadgeElement: $('#userBadge'),
     rateLimitElement: $('#rateLimit'),
     userTabElement: $('#userTab'),
+    resetElement: $('#reset'),
 
     // Methods
     updateUserName: function (newUserName) {
       if (newUserName && this.userName != newUserName) {
         this.userName = newUserName;
         this.userNameElement.val(this.userName);
+        if(appLocalStorage) appLocalStorage.userName = newUserName;
         this.status = 'Loading...';
         setTimeout(this.getUserData.bind(this), 100);
       }
@@ -241,7 +243,15 @@
   app.submitElement.click(function () {
     app.updateUserName(app.userNameElement.val());
   });
+  app.resetElement.click(function () {
+    appLocalStorage.clear();
+    location.reload();
+  });
   app.rateLimit = app.getRateLimit();
+
+  if(appLocalStorage) {
+    app.updateUserName(appLocalStorage.userName);
+  }
   app.status = app.status || 'Ready';
 
 })();
