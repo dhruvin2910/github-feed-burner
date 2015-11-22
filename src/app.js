@@ -24,7 +24,7 @@
     },
     set rateLimit(value) {
       var resetDate;
-      if(value.rate.remaining) {
+      if (value.rate.remaining) {
         this.rateLimitElement.html(value.rate.remaining);
       } else {
         resetDate = new Date(value.rate.reset * 1000);
@@ -46,19 +46,19 @@
     userPaneElement: $('#userPane'),
     userBadgeElement: $('#userBadge'),
     rateLimitElement: $('#rateLimit'),
+    userTabElement: $('#userTab'),
 
     // Methods
     updateUserName: function (newUserName) {
       if (newUserName && this.userName != newUserName) {
         this.userName = newUserName;
+        this.userNameElement.val(this.userName);
         this.status = 'Loading...';
         setTimeout(this.getUserData.bind(this), 100);
       }
     },
 
     getUserData: function () {
-
-      var errorHandler;
       this.userData = $.ajax({
         type: 'GET',
         url: app.urls.user,
@@ -78,7 +78,6 @@
         this.userNameElement.val('');
         this.updateUI();
       }
-
     },
 
     updateUI: function () {
@@ -114,11 +113,14 @@
         }));
       });
 
-      // Update status
-      this.status = 'Ready';
-
       // Update rateLimit
       this.rateLimit = this.getRateLimit();
+
+      // Set my feeds pane
+      this.userTabElement.tab('show');
+
+      // Update status
+      this.status = 'Ready';
 
     },
 
@@ -226,7 +228,13 @@
   });
 
   Handlebars.registerHelper('onlyRepo', function (repoName) {
+    if (!repoName) return '';
     return repoName.substr(repoName.indexOf('/') + 1);
+  });
+
+  Handlebars.registerHelper('onlyBranch', function (refName) {
+    if (!refName) return '';
+    return refName.substr(refName.lastIndexOf('/') + 1);
   });
 
   // Initialize
