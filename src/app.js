@@ -94,7 +94,7 @@
       // Update user
       this.userPaneElement.html('');
       if (this.userFeeds.length) {
-        app.userPaneElement.append(app.templates.feeds({
+        app.userPaneElement.append(app.generateFeeds({
           user: app.userData,
           feeds: app.userFeeds
         }));
@@ -103,7 +103,7 @@
       // Update followers
       this.followersPaneElement.html('');
       this.followersFeeds.forEach(function (listOfFeeds, index) {
-        app.followersPaneElement.append(app.templates.feeds({
+        app.followersPaneElement.append(app.generateFeeds({
           user: app.followersData[index],
           feeds: listOfFeeds
         }));
@@ -112,7 +112,7 @@
       // Update following
       this.followingPaneElement.html('');
       this.followingFeeds.forEach(function (listOfFeeds, index) {
-        app.followingPaneElement.append(app.templates.feeds({
+        app.followingPaneElement.append(app.generateFeeds({
           user: app.followingData[index],
           feeds: listOfFeeds
         }));
@@ -248,13 +248,14 @@
     app.updateUserName(app.userNameElement.val());
   });
   app.resetElement.click(function () {
-    ga('send', 'event', 'user', 'reset', appLocalStorage.userName);
+    ga('send', 'event', 'user', 'reset', appLocalStorage.userName || '');
     appLocalStorage.clear();
     location.reload();
   });
   app.rateLimit = app.getRateLimit();
 
   if (appLocalStorage) {
+    ga('send', 'event', 'user', 'retrived', appLocalStorage.userName || '');
     app.updateUserName(appLocalStorage.userName);
   }
   app.status = app.status || 'Ready';
