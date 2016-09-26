@@ -34,6 +34,7 @@
         this.submitElement.attr('disabled', true);
       }
     },
+    timeZoneOffset: new Date().getTimezoneOffset() * 60000,
 
     // Elements
     userNameElement: $('#username'),
@@ -230,6 +231,7 @@
   });
 
   Handlebars.registerHelper('formattedDateTime', function (dateTime) {
+    dateTime = new Date(new Date(dateTime).getTime() - app.timeZoneOffset).toISOString();
     return dateTime.substr(11, 5) + ' ' + dateTime.substr(8, 2) + '-' + dateTime.substr(5, 2) + '-' + dateTime.substr(2, 2);
   });
 
