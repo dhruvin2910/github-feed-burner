@@ -198,11 +198,11 @@
       },
 
       get followers() {
-        return app.urls.user + '/followers';
+        return app.urls.user + '/followers?per_page=100';
       },
 
       get following() {
-        return app.urls.user + '/following';
+        return app.urls.user + '/following?per_page=100';
       },
 
       feeds: function (user) {
