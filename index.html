@@ -1,114 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-
-  <title>GitHub Feed Burner</title>
-
-  <!-- dependencies-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <!-- /dependencies-->
-
-  <!-- styles-->
-  <link rel="stylesheet" href="src/style.css">
-  <!-- /styles-->
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Github Feed Burner</title>
 </head>
 <body>
-<br>
-
-<div class="container">
-
-  <!-- panel-->
-  <div class="panel panel-primary">
-
-    <!-- title-->
-    <div class="panel-heading">
-      <div class="panel-title">
-        GitHub Feed Burner
-      </div>
-    </div>
-
-    <!-- body-->
-    <div class="panel-body">
-
-      <div class="row">
-
-        <div class="form-group col-sm-4 col-md-3">
-
-          <!-- username-->
-          <div class="input-group">
-            <input type="text" class="form-control" id="username" placeholder="Username" autocomplete="off"
-                   autofocus>
-            <span class="input-group-btn">
-              <button id="submit" class="btn btn-default" type="submit">Go</button>
-              <button id="reset" class="btn btn-default" tabindex="-1" type="reset">Reset</button>
-            </span>
-          </div>
-
-        </div>
-
-        <div class="form-group col-sm-6 col-sm-push-2 col-md-4 col-md-push-5">
-
-          <!-- status-->
-          <div class="input-group disabled">
-            <div class="input-group-addon">Status</div>
-            <input type="text" class="form-control" id="status" disabled title="Status">
-            <div id="rateLimit" class="input-group-addon">-</div>
-          </div>
-
-        </div>
-
-      </div>
-
-      <hr>
-
-      <!-- tabs-->
-      <div>
-
-        <!-- nav tabs -->
-        <ul class="nav nav-tabs">
-          <li class="active">
-            <a href="#userPane" id="userTab" data-toggle="tab">My Feeds
-              <span id="userBadge" class="badge">-</span>
-            </a>
-          </li>
-          <li>
-            <a href="#followingPane" data-toggle="tab">Following
-              <span id="followingBadge" class="badge">-</span>
-            </a>
-          </li>
-          <li>
-            <a href="#followersPane" data-toggle="tab">Followers
-              <span id="followersBadge" class="badge">-</span>
-            </a>
-          </li>
-        </ul>
-
-        <!-- tab panes -->
-        <div class="tab-content">
-          <div class="tab-pane active" id="userPane"></div>
-          <div class="tab-pane" id="followersPane"></div>
-          <div class="tab-pane" id="followingPane"></div>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
-<!-- scripts-->
-<script src="src/localStorage.js"></script>
-<script src="src/app.js"></script>
-<!-- /scripts-->
-
+<div id="app"></div>
 </body>
 </html>
