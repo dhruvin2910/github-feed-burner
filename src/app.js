@@ -52,8 +52,7 @@
 
     // Methods
     updateUserName: function (newUserName) {
-      if (newUserName && this.userName != newUserName) {
-        ga('send', 'event', 'user', 'searched', newUserName);
+      if (newUserName && this.userName !== newUserName) {
         this.userName = newUserName;
         this.userNameElement.val(this.userName);
         if (appLocalStorage) appLocalStorage.userName = newUserName;
@@ -70,7 +69,6 @@
       }).responseJSON;
 
       if (!this.userData.message) {
-        ga('send', 'event', 'user', 'fetched', this.userData.login);
         this.getUserFeeds();
         this.populateFollowers();
         this.getFollowersFeeds();
@@ -86,7 +84,6 @@
     },
 
     updateUI: function () {
-      ga('send', 'event', 'ui', 'update');
       this.userNameElement.val(this.userName);
       this.followersBadgeElement.html(this.userData.followers);
       this.followingBadgeElement.html(this.userData.following);
@@ -169,7 +166,6 @@
     },
 
     generateFeeds: function (user) {
-      ga('send', 'event', 'user', 'generated', user.user.login);
       return $(
         app.templates.feeds(user)
       );
@@ -250,14 +246,12 @@
     app.updateUserName(app.userNameElement.val());
   });
   app.resetElement.click(function () {
-    ga('send', 'event', 'user', 'reset', appLocalStorage.userName || '');
     appLocalStorage.clear();
     location.reload();
   });
   app.rateLimit = app.getRateLimit();
 
   if (appLocalStorage) {
-    ga('send', 'event', 'user', 'retrived', appLocalStorage.userName || '');
     app.updateUserName(appLocalStorage.userName);
   }
   app.status = app.status || 'Ready';
