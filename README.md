@@ -5,19 +5,6 @@ An open-source feed-burner for github users. You may read public
 activities of the github users you are connected to (i.e. followers
 and following) all at one place.
 
-**Note**:
-
-1. The initial version is using
-[public api](https://developer.github.com/v3) access, which is
-[restricted](https://developer.github.com/v3/rate_limit/)
-(i.e in number of requests). If you get RateLimit Error, this
-must be it.
-
-2. GitHub will reset the bans a short while stated in Error.
-I look forward to add login to increase the number of requests,
-where merit will be the popularity of this repository
-(as in stars and PRs).
-
 How to use
 ----------
 
@@ -39,12 +26,12 @@ You may want to use it if you
 How to contribute
 -----------------
 
-Currently I'm looking for jQuery developers who can add more
-features. Don't raise issues, just Fork & PR.
+This app is created using Vue and Bootstrap. Contributions are welcome.
 
-Known issues
-------------
+1. Raise an issue
 
-- Slow internet connection may cause lag.
-- Since data is fetched from many endpoints searching may become too slow
-(not used deferred or promise).
+2. Optionally Submit a pull request
+
+3. Help resolving the issue
+
+4. Spread the word
