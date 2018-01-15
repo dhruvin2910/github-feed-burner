@@ -1,12 +1,13 @@
 import Vue from 'vue'
-import App from './App'
-import router from './router'
+import App from './components/App'
+import store from './store'
+import './bootstrap-vue'
 
 Vue.config.productionTip = false
 
 new Vue({
   el: '#app',
-  router,
+  store,
   components: {App},
-  template: '<App/>'
+  template: '<app/>'
 })
