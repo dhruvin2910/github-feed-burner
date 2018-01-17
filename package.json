@@ -7,12 +7,14 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "gh-pages": "NODE_DEBUG=gh-pages gh-pages --message 'Automated Build' --dist dist"
   },
   "dependencies": {
     "axios": "^0.17.1",
     "bootstrap": "^4.0.0-beta.3",
     "bootstrap-vue": "^1.4.0",
+    "gh-pages": "^1.1.0",
     "marked": "^0.3.12",
     "vue": "^2.5.2",
     "vuex": "^3.0.1"
