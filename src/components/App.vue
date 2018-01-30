@@ -31,6 +31,11 @@
 </script>
 
 <style>
+
+  body {
+    background-color: #262621;
+  }
+
   .gfb-container {
     background-color: #262621;
   }
@@ -74,7 +79,7 @@
     border-color: #6BE5F2 #6BE5F2;
   }
 
-  .tab-content .card{
+  .tab-content .card {
     margin: 8px 0;
   }
 
