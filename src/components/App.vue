@@ -1,6 +1,6 @@
 <template>
-  <b-container>
-    <b-card header="Github Feed Burner">
+  <b-container class="gfb-container">
+    <b-card title="Github Feed Burner">
       <user-form @submit="setUsername"/>
       <b-tabs v-if="feeds.my && !loading">
         <b-tab title="My Feeds" active>
@@ -29,3 +29,53 @@
     methods: mapActions(['setUsername'])
   }
 </script>
+
+<style>
+  .gfb-container {
+    background-color: #262621;
+  }
+
+  .card {
+    background-color: #262621;
+    border-color: #323232;
+  }
+
+  .card-title {
+    color: #6BE5F2;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .nav {
+    background-color: #323232;
+  }
+
+  .nav:focus {
+    outline: none;
+  }
+
+  .nav-tabs {
+    border-color: #6BE5F2;
+  }
+
+  .nav-tabs .nav-link {
+    text-decoration: none;
+    color: #6BE5F2;
+  }
+
+  .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+    border-color: #6BE5F2 #6BE5F2;
+    color: #6BE5F2;
+  }
+
+  .nav-tabs .nav-link:focus, .nav-tabs .nav-link.active {
+    color: #262621;
+    background-color: #6BE5F2;
+    border-color: #6BE5F2 #6BE5F2;
+  }
+
+  .tab-content .card{
+    margin: 8px 0;
+  }
+
+</style>

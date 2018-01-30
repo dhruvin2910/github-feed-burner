@@ -58,8 +58,47 @@
     margin: 0 !important;
   }
 
+  .table a, .card-header .row a {
+    text-decoration: none;
+    color: #6BE5F2;
+  }
+
+  .table a:hover, .card-header .row a:hover {
+    text-decoration: underline;
+    color: #6BE5F2;
+  }
+
   .avatar {
     width: 48px;
     height: 48px;
   }
+
+  .card {
+    border: 2px solid #323232;
+    color: #FFFFFF;
+    background-color: #262621;
+  }
+
+  .card-header {
+    background-color: #323232;
+    border-radius: 0;
+  }
+
+  .card-header .row {
+    align-items: center;
+    font-size: 20px;
+  }
+
+  .table {
+    border: none;
+  }
+
+  .table th, .table td {
+    border-color: #4B4B4B;
+  }
+
+  .table thead th {
+    border-bottom-color: #4B4B4B;
+  }
+
 </style>
