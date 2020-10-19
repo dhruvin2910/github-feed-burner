@@ -1,13 +1,10 @@
-import Vue from 'vue'
-import store from './store'
-import './bootstrap-vue'
-import App from './components/App'
+import App from './App.svelte';
 
-Vue.config.productionTip = false
+const app = new App({
+  target: document.body,
+  props: {
+    name: 'world'
+  }
+});
 
-new Vue({
-  el: '#app',
-  store,
-  components: {App},
-  template: '<app/>'
-})
+export default app;

@@ -8,7 +8,7 @@ and following) all at one place.
 How to use
 ----------
 
-1. Go to [github-feed-burner](http://dhruvin2910.github.io/github-feed-burner)
+1. Go to [github-feed-burner](https://dhruvin2910.github.io/github-feed-burner)
 
 2. Enter github username
 
